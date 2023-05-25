@@ -24,7 +24,6 @@ public class CustomerService {
     public Customer getCustomer(Long id){
         return customerRepository.findById(id).get();
     }
-
     public String addNewCustomer(Customer customer){
         Optional<Customer> c = customerRepository.findCustomerByName(customer.getName());
         if(c.isPresent()){
@@ -32,5 +31,9 @@ public class CustomerService {
         }
         customerRepository.save(customer);
         return "kunden "+customer.getName()+" har lagts till";
+    }
+
+    public boolean customerExistsById(Long id){
+        return customerRepository.existsById(id);
     }
 }

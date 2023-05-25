@@ -28,7 +28,10 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable("id") Long id){
         return customerService.getCustomer(id);
     }
-
+    @RequestMapping("exists/{id}")
+    public boolean customerExsists(@PathVariable("id") Long id){
+        return customerService.customerExistsById(id);
+    }
     @PostMapping
     public void addCustomer(@RequestBody Customer c){
         customerService.addNewCustomer(c);
